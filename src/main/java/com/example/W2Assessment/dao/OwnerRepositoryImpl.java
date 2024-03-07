@@ -26,13 +26,13 @@ public class OwnerRepositoryImpl implements OwnerRepository{
     }
 
     @Override
-    public Owner findOwnerById(int ownerId) {
+    public Owner findOwnerById(Integer ownerId) {
         Owner owner = entityManager.find(Owner.class,ownerId);
         return owner;
     }
 
     @Override
-    public Owner findOwnerByPetId(int petId) {
+    public Owner findOwnerByPetId(Integer petId) {
         Pet pet = entityManager.find(Pet.class,petId);
         return pet.getOwner();
     }

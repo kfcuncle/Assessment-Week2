@@ -7,10 +7,10 @@ import java.util.List;
 
 public interface PetRepository {
     void save(Pet pet);
-    Owner findOwnerById(int ownerId);
-    Owner findOwnerByPetId(int petId);
-    void delete(int petId);
+    Owner findOwnerById(Integer ownerId);
+    Owner findOwnerByPetId(Integer petId);
+    void delete(Integer petId);
     void update(Pet pet);
-    Pet findPetById(int petId);
-    List<Pet> findAllPetByOwnerId(int ownerId);
+    Pet findPetById(Integer petId);
+    List<Pet> findAllPetByOwnerId(Integer ownerId);
 }

@@ -24,19 +24,19 @@ public class PetRepositoryImpl implements PetRepository{
     }
 
     @Override
-    public Owner findOwnerById(int ownerId) {
+    public Owner findOwnerById(Integer ownerId) {
         Owner owner = entityManager.find(Owner.class,ownerId);
         return owner;
     }
 
     @Override
-    public Owner findOwnerByPetId(int petId) {
+    public Owner findOwnerByPetId(Integer petId) {
         Pet pet = entityManager.find(Pet.class,petId);
         return pet.getOwner();
     }
 
     @Override
-    public void delete(int petId) {
+    public void delete(Integer petId) {
         Pet pet = entityManager.find(Pet.class, petId);
         entityManager.remove(pet);
     }
@@ -47,13 +47,13 @@ public class PetRepositoryImpl implements PetRepository{
     }
 
     @Override
-    public Pet findPetById(int petId) {
+    public Pet findPetById(Integer petId) {
         Pet pet = entityManager.find(Pet.class,petId);
         return pet;
     }
 
     @Override
-    public List<Pet> findAllPetByOwnerId(int ownerId) {
+    public List<Pet> findAllPetByOwnerId(Integer ownerId) {
         TypedQuery<Pet> query = entityManager.createQuery(
                 "from Pet where owner.id = :data", Pet.class);
         query.setParameter("data", ownerId);

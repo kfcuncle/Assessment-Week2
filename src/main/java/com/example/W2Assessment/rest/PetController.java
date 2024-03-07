@@ -14,13 +14,13 @@ public class PetController {
     }
 
     @PostMapping("/{ownerId}")
-    public String save(@RequestBody Pet pet, @PathVariable int ownerId){
+    public String save(@RequestBody Pet pet, @PathVariable Integer ownerId){
         petService.save(pet,ownerId);
         return "Save Pet Name : " + pet.getName();
     }
 
     @DeleteMapping("/{petId}")
-    public String deletePet(@PathVariable int petId){
+    public String deletePet(@PathVariable Integer petId){
         petService.delete(petId);
         return "Deleted Pet Id: " + petId;
     }
@@ -32,7 +32,7 @@ public class PetController {
     }
 
     @GetMapping("/pets/{ownerId}")
-    public String findAllPetByOwnerId(@PathVariable int ownerId){
+    public String findAllPetByOwnerId(@PathVariable Integer ownerId){
         return petService.findAllPetByOwnerId(ownerId).toString();
     }
 

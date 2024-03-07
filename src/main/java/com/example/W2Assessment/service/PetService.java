@@ -7,10 +7,10 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface PetService {
-    void save(Pet pet, int ownerId);
-    void delete(int petId);
+    void save(Pet pet, Integer ownerId);
+    void delete(Integer petId);
     void update(Pet pet);
-    Pet findPetById(int petId);
-    List<Pet> findAllPetByOwnerId(int ownerId);
+    Pet findPetById(Integer petId);
+    List<Pet> findAllPetByOwnerId(Integer ownerId);
 
 }

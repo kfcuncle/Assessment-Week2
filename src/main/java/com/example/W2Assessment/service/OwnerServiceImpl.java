@@ -27,7 +27,7 @@ public class OwnerServiceImpl implements OwnerService{
 
 
     @Override
-    public Owner findOwnerByPetId(int petId) {
+    public Owner findOwnerByPetId(Integer petId) {
         return ownerRepository.findOwnerByPetId(petId);
     }
 

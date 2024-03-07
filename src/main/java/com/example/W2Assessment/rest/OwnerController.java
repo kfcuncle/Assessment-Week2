@@ -30,7 +30,7 @@ public class OwnerController {
     }
 
     @GetMapping("pet/{petId}")
-    public String findOwnerByPetId(@PathVariable int petId){
+    public String findOwnerByPetId(@PathVariable Integer petId){
         return ownerService.findOwnerByPetId(petId).toString();
     }
 

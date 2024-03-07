@@ -23,7 +23,7 @@ public class PetServiceImpl implements PetService{
 
     @Override
     @Transactional
-    public void save(Pet pet, int ownerId) {
+    public void save(Pet pet, Integer ownerId) {
         Owner owner = petRepository.findOwnerById(ownerId);
         pet.setOwner(owner);
         pet.setDateCreated(LocalDate.now());
@@ -33,7 +33,7 @@ public class PetServiceImpl implements PetService{
 
     @Override
     @Transactional
-    public void delete(int petId) {
+    public void delete(Integer petId) {
         if(petRepository.findPetById(petId) != null){
             petRepository.delete(petId);
         } else {
@@ -54,12 +54,12 @@ public class PetServiceImpl implements PetService{
     }
 
     @Override
-    public Pet findPetById(int petId) {
+    public Pet findPetById(Integer petId) {
         return petRepository.findPetById(petId);
     }
 
     @Override
-    public List<Pet> findAllPetByOwnerId(int ownerId) {
+    public List<Pet> findAllPetByOwnerId(Integer ownerId) {
         return petRepository.findAllPetByOwnerId(ownerId);
     }
 }
