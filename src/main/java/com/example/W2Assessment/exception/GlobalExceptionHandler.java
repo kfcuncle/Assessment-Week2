@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
-    @Value(value = "${data.exception.message}")
-    private String message;
+
+    private String message = "Pet ID is Not Exists";
 
     @ExceptionHandler(value = NoSuchPetExistsException.class)
     public ResponseEntity noSuchPetExistsException(NoSuchPetExistsException noSuchPetExistsException) {

@@ -24,7 +24,7 @@ public class Pet {
     @Column(name = "date_modified")
     private LocalDate dateModified;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
+    @ManyToOne()
     @JoinColumn(name = "owner_id")
     private Owner owner;
 

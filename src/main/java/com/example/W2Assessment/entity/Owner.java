@@ -27,7 +27,7 @@ public class Owner {
     @Column(name = "date_modified")
     private LocalDate dateModified;
 
-    @OneToMany(mappedBy = "owner", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
+    @OneToMany(mappedBy = "owner", fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     private List<Pet> pets;
 
     public Owner(){
