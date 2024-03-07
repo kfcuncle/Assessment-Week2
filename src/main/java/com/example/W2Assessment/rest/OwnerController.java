@@ -24,18 +24,18 @@ public class OwnerController {
     }
 
     @GetMapping("")
-    public String findAllOwners(){
+    public String findAllOwners() {
         List<Owner> owners = ownerService.findAll();
         return owners.toString();
     }
 
     @GetMapping("pet/{petId}")
-    public String findOwnerByPetId(@PathVariable Integer petId){
+    public String findOwnerByPetId(@PathVariable Integer petId) {
         return ownerService.findOwnerByPetId(petId).toString();
     }
 
     @GetMapping("dateCreated/{dateCreated}")
-    public String findOwnerByDateCreated(@PathVariable LocalDate dateCreated){
+    public String findOwnerByDateCreated(@PathVariable LocalDate dateCreated) {
         return ownerService.findOwnerByDateCreated(dateCreated).toString();
     }
 }

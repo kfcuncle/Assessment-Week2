@@ -30,7 +30,7 @@ public class Owner {
     @OneToMany(mappedBy = "owner", fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     private List<Pet> pets;
 
-    public Owner(){
+    public Owner() {
 
     }
 
@@ -89,8 +89,8 @@ public class Owner {
         this.pets = pets;
     }
 
-    public void add(Pet pet){
-        if(pet == null){
+    public void add(Pet pet) {
+        if (pet == null) {
             pets = new ArrayList<>();
         }
         pets.add(pet);

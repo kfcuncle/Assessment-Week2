@@ -8,9 +8,13 @@ import java.util.List;
 
 public interface PetService {
     void save(Pet pet, Integer ownerId);
+
     void delete(Integer petId);
+
     void update(Pet pet);
+
     Pet findPetById(Integer petId);
+
     List<Pet> findAllPetByOwnerId(Integer ownerId);
 
 }

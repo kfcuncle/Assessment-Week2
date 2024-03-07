@@ -3,6 +3,7 @@ package com.example.W2Assessment.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+
 @Entity
 @Table(name = "pet")
 public class Pet {
@@ -28,7 +29,7 @@ public class Pet {
     @JoinColumn(name = "owner_id")
     private Owner owner;
 
-    public Pet(){
+    public Pet() {
     }
 
     public Pet(String name, String breed, LocalDate dateCreated, LocalDate dateModified) {

@@ -1,6 +1,5 @@
 package com.example.W2Assessment.dao;
 
-import com.example.W2Assessment.entity.Owner;
 import com.example.W2Assessment.entity.Pet;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
@@ -10,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class PetRepositoryImpl implements PetRepository{
+public class PetRepositoryImpl implements PetRepository {
     private EntityManager entityManager;
 
     @Autowired
@@ -21,18 +20,6 @@ public class PetRepositoryImpl implements PetRepository{
     @Override
     public void save(Pet pet) {
         entityManager.persist(pet);
-    }
-
-    @Override
-    public Owner findOwnerById(Integer ownerId) {
-        Owner owner = entityManager.find(Owner.class,ownerId);
-        return owner;
-    }
-
-    @Override
-    public Owner findOwnerByPetId(Integer petId) {
-        Pet pet = entityManager.find(Pet.class,petId);
-        return pet.getOwner();
     }
 
     @Override
@@ -48,7 +35,7 @@ public class PetRepositoryImpl implements PetRepository{
 
     @Override
     public Pet findPetById(Integer petId) {
-        Pet pet = entityManager.find(Pet.class,petId);
+        Pet pet = entityManager.find(Pet.class, petId);
         return pet;
     }
 

@@ -2,7 +2,6 @@ package com.example.W2Assessment.service;
 
 import com.example.W2Assessment.dao.OwnerRepository;
 import com.example.W2Assessment.entity.Owner;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -10,7 +9,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Service
-public class OwnerServiceImpl implements OwnerService{
+public class OwnerServiceImpl implements OwnerService {
     private OwnerRepository ownerRepository;
 
     public OwnerServiceImpl(OwnerRepository ownerRepository) {

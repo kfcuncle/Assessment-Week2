@@ -5,8 +5,6 @@ import com.example.W2Assessment.dao.PetRepository;
 import com.example.W2Assessment.entity.Owner;
 import com.example.W2Assessment.entity.Pet;
 import com.example.W2Assessment.exception.NoSuchPetExistsException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,17 +12,20 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Service
-public class PetServiceImpl implements PetService{
-    private PetRepository petRepository;
+public class PetServiceImpl implements PetService {
 
-    public PetServiceImpl(PetRepository petRepository) {
+    private final PetRepository petRepository;
+    private final OwnerRepository ownerRepository;
+
+    public PetServiceImpl(PetRepository petRepository, OwnerRepository ownerRepository) {
         this.petRepository = petRepository;
+        this.ownerRepository = ownerRepository;
     }
 
     @Override
     @Transactional
     public void save(Pet pet, Integer ownerId) {
-        Owner owner = petRepository.findOwnerById(ownerId);
+        Owner owner = ownerRepository.findOwnerById(ownerId);
         pet.setOwner(owner);
         pet.setDateCreated(LocalDate.now());
         pet.setDateModified(LocalDate.now());
@@ -34,7 +35,7 @@ public class PetServiceImpl implements PetService{
     @Override
     @Transactional
     public void delete(Integer petId) {
-        if(petRepository.findPetById(petId) != null){
+        if (petRepository.findPetById(petId) != null) {
             petRepository.delete(petId);
         } else {
             throw new NoSuchPetExistsException(
@@ -45,7 +46,7 @@ public class PetServiceImpl implements PetService{
     @Override
     @Transactional
     public void update(Pet pet) {
-        Owner owner = petRepository.findOwnerByPetId(pet.getId());
+        Owner owner = ownerRepository.findOwnerByPetId(pet.getId());
         Pet tempPet = petRepository.findPetById(pet.getId());
         pet.setOwner(owner);
         pet.setDateCreated(tempPet.getDateCreated());

@@ -6,13 +6,12 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
 import java.util.List;
 
 @Repository
-public class OwnerRepositoryImpl implements OwnerRepository{
+public class OwnerRepositoryImpl implements OwnerRepository {
     private EntityManager entityManager;
 
     @Autowired
@@ -27,13 +26,13 @@ public class OwnerRepositoryImpl implements OwnerRepository{
 
     @Override
     public Owner findOwnerById(Integer ownerId) {
-        Owner owner = entityManager.find(Owner.class,ownerId);
+        Owner owner = entityManager.find(Owner.class, ownerId);
         return owner;
     }
 
     @Override
     public Owner findOwnerByPetId(Integer petId) {
-        Pet pet = entityManager.find(Pet.class,petId);
+        Pet pet = entityManager.find(Pet.class, petId);
         return pet.getOwner();
     }
 
@@ -47,7 +46,7 @@ public class OwnerRepositoryImpl implements OwnerRepository{
         return query.getResultList();
     }
 
-    public List<Owner> findAll(){
+    public List<Owner> findAll() {
         TypedQuery<Owner> query = entityManager.createQuery(
                 "from Owner", Owner.class);
         // execute query
