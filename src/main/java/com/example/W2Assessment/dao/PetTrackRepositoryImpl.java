@@ -66,8 +66,7 @@ public class PetTrackRepositoryImpl implements PetTrackRepository{
         query.setParameter("data", ownerId);
 
         // execute query
-        List<Pet> pets = query.getResultList();
-        return pets;
+        return query.getResultList();
     }
 
     @Override
@@ -77,15 +76,13 @@ public class PetTrackRepositoryImpl implements PetTrackRepository{
         query.setParameter("data", dateCreated);
 
         // execute query
-        List<Owner> owners = query.getResultList();
-        return owners;
+        return query.getResultList();
     }
 
     public List<Owner> findAll(){
         TypedQuery<Owner> query = entityManager.createQuery(
                 "from Owner", Owner.class);
         // execute query
-        List<Owner> owners = query.getResultList();
-        return owners;
+        return query.getResultList();
     }
 }
