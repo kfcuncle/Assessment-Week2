@@ -2,6 +2,8 @@ package com.example.W2Assessment.rest;
 
 import com.example.W2Assessment.entity.Owner;
 import com.example.W2Assessment.service.OwnerService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -18,24 +20,24 @@ public class OwnerController {
     }
 
     @PostMapping("")
-    public String save(@RequestBody Owner owner) {
+    public ResponseEntity save(@RequestBody Owner owner) {
         ownerService.save(owner);
-        return "Save Owner Name : " + owner.getFirstName();
+        return new ResponseEntity("Save Owner Name : " + owner.getFirstName(), HttpStatus.OK);
     }
 
     @GetMapping("")
-    public String findAllOwners() {
+    public ResponseEntity findAllOwners() {
         List<Owner> owners = ownerService.findAll();
-        return owners.toString();
+        return new ResponseEntity(owners.toString(), HttpStatus.OK);
     }
 
     @GetMapping("pet/{petId}")
-    public String findOwnerByPetId(@PathVariable Integer petId) {
-        return ownerService.findOwnerByPetId(petId).toString();
+    public ResponseEntity findOwnerByPetId(@PathVariable Integer petId) {
+        return new ResponseEntity(ownerService.findOwnerByPetId(petId).toString(), HttpStatus.OK);
     }
 
     @GetMapping("dateCreated/{dateCreated}")
-    public String findOwnerByDateCreated(@PathVariable LocalDate dateCreated) {
-        return ownerService.findOwnerByDateCreated(dateCreated).toString();
+    public ResponseEntity findOwnerByDateCreated(@PathVariable LocalDate dateCreated) {
+        return new ResponseEntity(ownerService.findOwnerByDateCreated(dateCreated).toString(), HttpStatus.OK);
     }
 }
