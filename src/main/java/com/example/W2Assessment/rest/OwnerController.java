@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/owner")
 public class OwnerController {
 
@@ -20,24 +21,24 @@ public class OwnerController {
     }
 
     @PostMapping("")
-    public ResponseEntity save(@RequestBody Owner owner) {
+    public ResponseEntity<String> save(@RequestBody Owner owner) {
         ownerService.save(owner);
-        return new ResponseEntity("Save Owner Name : " + owner.getFirstName(), HttpStatus.OK);
+        return new ResponseEntity<String>("Save Owner Name : " + owner.getFirstName(), HttpStatus.OK);
     }
 
     @GetMapping("")
-    public ResponseEntity findAllOwners() {
+    public ResponseEntity<List<Owner>> findAllOwners() {
         List<Owner> owners = ownerService.findAll();
-        return new ResponseEntity(owners.toString(), HttpStatus.OK);
+        return new ResponseEntity<List<Owner>>(owners, HttpStatus.OK);
     }
 
     @GetMapping("pet/{petId}")
-    public ResponseEntity findOwnerByPetId(@PathVariable Integer petId) {
-        return new ResponseEntity(ownerService.findOwnerByPetId(petId).toString(), HttpStatus.OK);
+    public ResponseEntity<Owner> findOwnerByPetId(@PathVariable Integer petId) {
+        return new ResponseEntity<Owner>(ownerService.findOwnerByPetId(petId), HttpStatus.OK);
     }
 
     @GetMapping("dateCreated/{dateCreated}")
-    public ResponseEntity findOwnerByDateCreated(@PathVariable LocalDate dateCreated) {
-        return new ResponseEntity(ownerService.findOwnerByDateCreated(dateCreated).toString(), HttpStatus.OK);
+    public ResponseEntity<List<Owner>> findOwnerByDateCreated(@PathVariable LocalDate dateCreated) {
+        return new ResponseEntity<List<Owner>>(ownerService.findOwnerByDateCreated(dateCreated), HttpStatus.OK);
     }
 }

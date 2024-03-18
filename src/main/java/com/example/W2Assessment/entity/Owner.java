@@ -1,5 +1,6 @@
 package com.example.W2Assessment.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -27,6 +28,7 @@ public class Owner {
     @Column(name = "date_modified")
     private LocalDate dateModified;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "owner", fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     private List<Pet> pets;
 
